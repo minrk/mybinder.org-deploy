@@ -56,4 +56,7 @@ spec:
             - {{ $ipOrCidr}}/32
             {{- end }}
           {{- end }}
+    {{ range $rule := .Values.binderhub.networkPolicy.egress.extraRules }}
+    - {{- $rule | toYaml | nindent 6 }}
+    {{- end }}
 {{- end }}

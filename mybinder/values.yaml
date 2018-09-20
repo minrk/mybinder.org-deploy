@@ -14,7 +14,15 @@ binderhub:
         - 873 # rsync
         - 1094 # xroot
       cidr: 0.0.0.0/0
-  extraConfig:
+      extraRules:
+        - ports:
+            - port: 8443
+              protocol: TCP
+          to:
+            - ipBlock:
+                # lindas-data.ch
+                cidr: 185.128.172.122/32
+
     # Add banned repositories to the list below
     # They should be strings that will match "^<org-name>/<repo-name>.*"
     bans: |
